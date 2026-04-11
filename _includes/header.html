@@ -1,0 +1,14 @@
+<header class="site-header">
+  <div class="container">
+    <a href="{{ '/' | relative_url }}" class="brand">
+      <img class="mark" src="{{ '/assets/img/icon.png' | relative_url }}" alt="" width="32" height="32">
+      <span>Pi — The Game</span>
+    </a>
+    <nav class="site-nav" aria-label="Main">
+      {% for item in site.nav %}
+        <a href="{{ item.url | relative_url }}">{{ item.label }}</a>
+      {% endfor %}
+    </nav>
+    <a href="{{ site.app_store_url }}" class="btn btn-primary btn-sm">Get the App</a>
+  </div>
+</header>

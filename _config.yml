@@ -1,0 +1,60 @@
+title: "Pi — The Game"
+tagline: "Memorize the digits of π. Play in the browser or on iPhone."
+description: >-
+  Play Pi — The Game on the web or iPhone. Memorize the digits of pi,
+  explore 1,000,000 digits, use circumference, arc length and reference angle
+  calculators, and celebrate Pi Day with quizzes, trivia, piems and coloring sheets.
+url: "https://pithegame.com"
+baseurl: ""
+author: "Pi — The Game"
+
+app_store_url: "https://apps.apple.com/us/app/pi-the-game/id974805037"
+app_store_id: "974805037"
+
+# GitHub Pages-supported plugins
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+permalink: /:slug/
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - .pi-cache
+  - .claude
+  - node_modules
+  - vendor
+
+# Navigation used by the default layout
+nav:
+  - { url: "/play/",                     label: "Play" }
+  - { url: "/digits-of-pi/",             label: "Digits" }
+  - { url: "/circumference-calculator/", label: "Calculators" }
+  - { url: "/pi-day/",                   label: "Pi Day" }
+  - { url: "/fun-facts-about-pi/",       label: "Facts" }
+  - { url: "/pi-quiz/",                  label: "Quiz" }
+
+calculators:
+  - { url: "/circumference-calculator/",   label: "Circumference Calculator" }
+  - { url: "/arc-length-calculator/",      label: "Arc Length Calculator" }
+  - { url: "/reference-angle-calculator/", label: "Reference Angle Calculator" }
+  - { url: "/diameter-to-circumference/",  label: "Diameter to Circumference" }
+
+digit_pages:
+  - { url: "/digits-of-pi/",              label: "Digits of Pi" }
+  - { url: "/million-digits-of-pi/",      label: "1 Million Digits of Pi" }
+  - { url: "/first-million-digits-of-pi/",label: "First Million Digits" }
+  - { url: "/all-digits-of-pi/",          label: "All Digits of Pi" }
+  - { url: "/pi-numbers/",                label: "Pi Numbers" }
+  - { url: "/pi-number/",                 label: "Pi Number" }
+
+content_pages:
+  - { url: "/pi-day/",                    label: "Pi Day" }
+  - { url: "/piems/",                     label: "Piems" }
+  - { url: "/fun-facts-about-pi/",        label: "Fun Facts About Pi" }
+  - { url: "/pi-quiz/",                   label: "Pi Quiz" }
+  - { url: "/pi-day-trivia/",             label: "Pi Day Trivia" }
+  - { url: "/pi-day-coloring-sheets/",    label: "Pi Day Coloring Sheets" }
+  - { url: "/pi-calculator-game/",        label: "Pi Calculator Game" }

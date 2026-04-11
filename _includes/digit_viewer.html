@@ -1,0 +1,21 @@
+{%- assign src = include.src -%}
+{%- assign chunk = include.chunk | default: 100 -%}
+{%- assign initial = include.initial | default: 1000 -%}
+<div class="card digit-viewer"
+     data-src="{{ src | relative_url }}"
+     data-chunk="{{ chunk }}"
+     data-initial="{{ initial }}">
+  <div class="header">
+    <div class="status">Loading digits…</div>
+    <div class="controls">
+      <label class="muted" style="font-size:12px;">Jump to digit</label>
+      <input type="number" min="1" data-jump>
+      <a class="btn btn-ghost btn-sm" data-download href="{{ src | relative_url }}" download>↓ Download</a>
+    </div>
+  </div>
+  <pre class="digits" data-out>Loading…</pre>
+  <div class="footer">
+    <span data-count></span>
+    <button class="btn btn-ghost btn-sm" data-more type="button">Show 10,000 more →</button>
+  </div>
+</div>

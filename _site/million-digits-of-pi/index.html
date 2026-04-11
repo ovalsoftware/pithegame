@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>1 Million Digits of Pi — Pi — The Game</title>
+<meta name="description" content="Browse and download the first 1,000,000 digits of pi (π). Jump to any position between 1 and one million and see pi in glorious detail.">
+<meta name="keywords" content="million digits of pi, 1 million digits of pi, first million digits of pi, one million digits of pi, pi 1000000">
+<link rel="canonical" href="http://localhost:4000/million-digits-of-pi/">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="sitemap" href="/sitemap.xml">
+<meta name="theme-color" content="#4ec9a8">
+
+<meta property="og:type"        content="website">
+<meta property="og:site_name"   content="Pi — The Game">
+<meta property="og:title"       content="1 Million Digits of Pi">
+<meta property="og:description" content="Browse and download the first 1,000,000 digits of pi (π). Jump to any position between 1 and one million and see pi in glorious detail.">
+<meta property="og:url"         content="http://localhost:4000/million-digits-of-pi/">
+<meta property="og:image"       content="http://localhost:4000/assets/og.png">
+<meta name="twitter:card"       content="summary_large_image">
+<meta name="twitter:title"      content="1 Million Digits of Pi">
+<meta name="twitter:description" content="Browse and download the first 1,000,000 digits of pi (π). Jump to any position between 1 and one million and see pi in glorious detail.">
+<meta name="twitter:image"      content="http://localhost:4000/assets/og.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Pi — The Game",
+  "url": "http://localhost:4000",
+  "description": "Play Pi — The Game on the web or iPhone. Memorize the digits of pi, explore 1,000,000 digits, use circumference, arc length and reference angle calculators, and celebrate Pi Day with quizzes, trivia, piems and coloring sheets."
+}
+</script>
+
+
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to content</a>
+  <header class="site-header">
+  <div class="container">
+    <a href="/" class="brand">
+      <img class="mark" src="/assets/img/icon.png" alt="" width="32" height="32">
+      <span>Pi — The Game</span>
+    </a>
+    <nav class="site-nav" aria-label="Main">
+      
+        <a href="/play/">Play</a>
+      
+        <a href="/digits-of-pi/">Digits</a>
+      
+        <a href="/circumference-calculator/">Calculators</a>
+      
+        <a href="/pi-day/">Pi Day</a>
+      
+        <a href="/fun-facts-about-pi/">Facts</a>
+      
+        <a href="/pi-quiz/">Quiz</a>
+      
+    </nav>
+    <a href="https://apps.apple.com/us/app/pi-the-game/id974805037" class="btn btn-primary btn-sm">Get the App</a>
+  </div>
+</header>
+
+  <main id="main">
+    <section class="page-head">
+  <div class="container">
+    <div class="eyebrow">1,000,000 digits</div>
+    <h1>One Million Digits of Pi</h1>
+    <p>Every one of the first million digits of pi — paginated, searchable by position, and downloadable as a plain text file. Go ahead, scroll.</p>
+  </div>
+</section>
+
+<section class="section" style="padding-top:16px;">
+  <div class="container" style="max-width:900px;">
+    <div class="card digit-viewer"
+     data-src="/assets/pi/pi-1m.txt"
+     data-chunk="100"
+     data-initial="1000">
+  <div class="header">
+    <div class="status">Loading digits…</div>
+    <div class="controls">
+      <label class="muted" style="font-size:12px;">Jump to digit</label>
+      <input type="number" min="1" data-jump>
+      <a class="btn btn-ghost btn-sm" data-download href="/assets/pi/pi-1m.txt" download>↓ Download</a>
+    </div>
+  </div>
+  <pre class="digits" data-out>Loading…</pre>
+  <div class="footer">
+    <span data-count></span>
+    <button class="btn btn-ghost btn-sm" data-more type="button">Show 10,000 more →</button>
+  </div>
+</div>
+
+  </div>
+</section>
+
+<section class="section" style="padding-top:24px;">
+  <div class="container prose">
+    <h2>A million digits, computed and verified</h2>
+    <p>The text file above contains <strong>exactly 1,000,000 digits after the decimal point</strong> — the first million digits of pi. That's roughly 1 megabyte of text, enough to fill about 500 printed pages at a normal font size. The digits are loaded on-demand in chunks so the page stays responsive even on a phone.</p>
+    <p>Pi has been computed to this precision and far beyond using algorithms like the <em>Chudnovsky formula</em>, which converges on pi at a rate of roughly 14 digits per term. In 2022 researchers at the University of Applied Sciences of the Grisons calculated pi to 100 trillion digits — more than you could read in a lifetime even at a digit per second.</p>
+
+    <h2>Fun things you can do with a million digits</h2>
+    <ul>
+      <li>Find your birthday as a sequence inside pi (spoiler: everyone's is in there).</li>
+      <li>Check the <a href="https://en.wikipedia.org/wiki/Feynman_point">Feynman point</a> at position 762, where six 9s appear in a row.</li>
+      <li>Use the jump box to check position 1,000,000 — it's a <code>5</code>.</li>
+      <li>Search for interesting patterns, repeated digits, or your lucky number.</li>
+    </ul>
+
+    <h2>Why "just" a million?</h2>
+    <p>A million digits is the sweet spot for a pi-curious human. More than that and you're no longer browsing — you're moving megabytes. If you'd like far more, specialized research tools like <a href="https://www.numberworld.org/y-cruncher/">y-cruncher</a> can compute and dump billions of digits straight to disk.</p>
+
+    <h2>Related</h2>
+    <ul>
+      <li><a href="/digits-of-pi/">The first 10,000 digits of pi</a></li>
+      <li><a href="/first-million-digits-of-pi/">First million digits of pi</a></li>
+      <li><a href="/all-digits-of-pi/">All digits of pi</a></li>
+      <li><a href="/play/">Memorize them in the pi game</a></li>
+    </ul>
+  </div>
+</section>
+
+  </main>
+  <footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <div class="brand"><img class="mark" src="/assets/img/icon.png" alt="" width="32" height="32"> Pi — The Game</div>
+      <p class="muted" style="margin-top:12px; font-size:14px;">Memorize the digits of π. Play in the browser or on iPhone.</p>
+      <a href="https://apps.apple.com/us/app/pi-the-game/id974805037" class="btn btn-primary btn-sm" style="margin-top:12px;">Download on iPhone</a>
+    </div>
+    <div>
+      <h4>Play</h4>
+      <ul>
+        <li><a href="/play/">Play Pi — The Game</a></li>
+        <li><a href="/pi-calculator-game/">Pi Calculator Game</a></li>
+        <li><a href="/pi-quiz/">Pi Quiz</a></li>
+        <li><a href="/pi-day-trivia/">Pi Day Trivia</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Calculators</h4>
+      <ul>
+        
+          <li><a href="/circumference-calculator/">Circumference Calculator</a></li>
+        
+          <li><a href="/arc-length-calculator/">Arc Length Calculator</a></li>
+        
+          <li><a href="/reference-angle-calculator/">Reference Angle Calculator</a></li>
+        
+          <li><a href="/diameter-to-circumference/">Diameter to Circumference</a></li>
+        
+      </ul>
+    </div>
+    <div>
+      <h4>Digits &amp; Content</h4>
+      <ul>
+        
+          <li><a href="/digits-of-pi/">Digits of Pi</a></li>
+        
+          <li><a href="/million-digits-of-pi/">1 Million Digits of Pi</a></li>
+        
+          <li><a href="/first-million-digits-of-pi/">First Million Digits</a></li>
+        
+          <li><a href="/all-digits-of-pi/">All Digits of Pi</a></li>
+        
+        
+          <li><a href="/pi-day/">Pi Day</a></li>
+        
+          <li><a href="/piems/">Piems</a></li>
+        
+          <li><a href="/fun-facts-about-pi/">Fun Facts About Pi</a></li>
+        
+      </ul>
+    </div>
+  </div>
+  <div class="footer-legal">
+    <div class="container">
+      <p>© 2026 Pi — The Game. All rights reserved.</p>
+      <p>Made with π and ♥︎ for math lovers.</p>
+    </div>
+  </div>
+</footer>
+
+  <script src="/assets/js/digit-viewer.js" defer></script>
+</body>
+</html>

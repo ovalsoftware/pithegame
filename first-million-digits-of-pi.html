@@ -1,0 +1,40 @@
+---
+layout: default
+permalink: /first-million-digits-of-pi/
+title: "First Million Digits of Pi"
+description: "The first million digits of pi — browse, jump to any position between 1 and 1,000,000 and download as a plain text file."
+keywords: "first million digits of pi, first 1000000 digits of pi, first 1,000,000 digits of pi, pi million digits"
+---
+
+<section class="page-head">
+  <div class="container">
+    <div class="eyebrow">Digits 1 to 1,000,000</div>
+    <h1>The First Million Digits of Pi</h1>
+    <p>Scroll the first one million decimal digits of π, jump to any position, and download the raw file to tinker with locally.</p>
+  </div>
+</section>
+
+<section class="section" style="padding-top:16px;">
+  <div class="container" style="max-width:900px;">
+    {% include digit_viewer.html src="/assets/pi/pi-1m.txt" chunk=100 initial=1000 %}
+  </div>
+</section>
+
+<section class="section" style="padding-top:24px;">
+  <div class="container prose">
+    <h2>Why 1,000,000?</h2>
+    <p>One million is a convenient benchmark: it's big enough that every plausible birthday, postal code and phone number you can think of is hiding in the expansion somewhere, yet small enough to fit in a browser tab. It's also the point where humans really <em>feel</em> how endless pi is. Scroll for a while and you'll understand why mathematicians fall in love with this number.</p>
+
+    <h2>Anatomy of the first million digits</h2>
+    <p>The distribution of 0–9 in the first million digits of pi is almost exactly uniform — each digit appears roughly 100,000 times. No one has ever proven that pi is a "normal number" (one where every sequence of digits appears with the expected frequency), but empirically, it sure looks like one.</p>
+    <p>The longest run of a single digit in the first million is <em>nine 7s in a row</em>, starting at position 710,100. The famous Feynman point — six 9s at position 762 — is far less rare, but it comes much earlier which is why it's the one mathematicians tell jokes about.</p>
+
+    <h2>Want to go further?</h2>
+    <ul>
+      <li><a href="{{ '/million-digits-of-pi/' | relative_url }}">Million digits of pi</a> (same dataset, different view)</li>
+      <li><a href="{{ '/digits-of-pi/' | relative_url }}">First 10,000 digits of pi</a></li>
+      <li><a href="{{ '/all-digits-of-pi/' | relative_url }}">All digits of pi</a> — and why no-one can have them</li>
+      <li><a href="{{ '/play/' | relative_url }}">Memorize digits with Pi — The Game</a></li>
+    </ul>
+  </div>
+</section>

@@ -1,0 +1,121 @@
+---
+layout: default
+title: "Pi — The Game · Memorize the Digits of π"
+description: "Play Pi — The Game on the web or iPhone. Memorize the digits of pi, explore 1,000,000 digits, use pi calculators, and celebrate Pi Day."
+keywords: "pi, pi the game, digits of pi, pi game, pi day, memorize pi, pi calculator, pi quiz"
+schema:
+  "@context": "https://schema.org"
+  "@type": "MobileApplication"
+  name: "Pi - The Game"
+  operatingSystem: "iOS"
+  applicationCategory: "GameApplication"
+  url: "https://apps.apple.com/us/app/pi-the-game/id974805037"
+  author:
+    "@type": "Organization"
+    name: "Applorium Ltd"
+  offers:
+    "@type": "Offer"
+    price: "0"
+    priceCurrency: "USD"
+  aggregateRating:
+    "@type": "AggregateRating"
+    ratingValue: "4.7"
+    ratingCount: "1687"
+---
+
+<section class="hero">
+  <div class="container hero-grid">
+    <div>
+      <span class="pill"><span class="dot"></span>Since 2014 · Millions of digits memorized worldwide</span>
+      <h1 style="margin-top:18px;">How many digits of<br><span class="pi">π</span> can you remember?</h1>
+      <p class="lead">Pi — The Game turns memorizing pi into a beautiful, addictive challenge. Learn the digits ten at a time, beat your streak, and join a global community of pi lovers.</p>
+      <div class="hero-actions">
+        <a href="{{ '/play/' | relative_url }}" class="btn btn-primary">▶ Play in Browser</a>
+        {% include app_badge.html %}
+      </div>
+      <p class="hero-note">Free. No signup. Works on phone, tablet and desktop.</p>
+    </div>
+    <div class="hero-shot">
+      <img src="{{ '/assets/screenshots/1.jpg' | relative_url }}"
+           alt="Pi — The Game running on iPhone, showing a streak of digits being memorized"
+           width="320" height="569" loading="eager" fetchpriority="high">
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2>Why players love Pi — The Game</h2>
+    <p class="lead">A decade of polish in one calm little app. Used by students, teachers, math olympians and Pi Day champions around the world.</p>
+    <div class="feature-grid">
+      <div class="card feature"><div class="icon">🧠</div><h3>Learn 10 digits at a time</h3><p>Pi — The Game teaches the digits of pi in small, rewarding chunks. No overwhelm, just steady progress and satisfying checkpoints.</p></div>
+      <div class="card feature"><div class="icon">✨</div><h3>Beautiful &amp; distraction-free</h3><p>A calm typographic design that lets you focus on the digits. Dark theme, haptic feedback on iPhone. No ads, ever.</p></div>
+      <div class="card feature"><div class="icon">📈</div><h3>Track your streak</h3><p>See how far you can go without a single mistake. Beat your personal best and climb a global leaderboard of pi memorizers.</p></div>
+      <div class="card feature"><div class="icon">🥧</div><h3>Perfect for Pi Day</h3><p>Celebrate 3/14 by memorizing 100 digits. Classroom-friendly and great for pi recitation challenges and trivia.</p></div>
+      <div class="card feature"><div class="icon">🎁</div><h3>Free to play</h3><p>The web version is free forever. The iPhone app is a one-time purchase that unlocks trophies, checkpoints and themes.</p></div>
+      <div class="card feature"><div class="icon">📱</div><h3>Works everywhere</h3><p>Browser, iPhone, iPad. Progress is stored locally — no account required. Play offline once the page has loaded.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="panel">
+      <div>
+        <h2 style="text-align:left;">The whole universe of π, in one place.</h2>
+        <p>Everything pi-curious humans come looking for: calculators, a million digits, fun facts, Pi Day printables, piems, and a real game to play. All free. All designed for clarity.</p>
+      </div>
+      <div class="link-grid">
+        {% for item in site.calculators %}<a href="{{ item.url | relative_url }}">{{ item.label }} →</a>{% endfor %}
+        <a href="{{ '/digits-of-pi/' | relative_url }}">Digits of Pi →</a>
+        <a href="{{ '/million-digits-of-pi/' | relative_url }}">1 Million Digits →</a>
+        <a href="{{ '/pi-day/' | relative_url }}">Pi Day →</a>
+        <a href="{{ '/fun-facts-about-pi/' | relative_url }}">Fun Facts →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container" style="display:grid;gap:48px;grid-template-columns:1fr;align-items:center;">
+    <style>@media(min-width:820px){.two-col{grid-template-columns:1fr 1fr !important;}}</style>
+    <div class="two-col" style="display:grid;gap:48px;grid-template-columns:1fr;align-items:center;">
+      <div>
+        <h2 style="text-align:left;">What is pi, really?</h2>
+        <p>Pi (π) is the ratio of a circle's circumference to its diameter. It's the same for every circle in the universe — from a soup can to a galaxy — and its decimal expansion goes on forever without ever repeating. That's what makes it endlessly fascinating, and endlessly memorizable.</p>
+        <p>The first ten digits of pi are <code>3.141592653</code>. The current world record holder has recited over 70,000. Pi — The Game is how most people start the climb.</p>
+        <div class="hero-actions" style="margin-top:20px;">
+          <a href="{{ '/digits-of-pi/' | relative_url }}" class="btn btn-ghost btn-sm">See the digits →</a>
+          <a href="{{ '/fun-facts-about-pi/' | relative_url }}" class="btn btn-ghost btn-sm">Fun facts →</a>
+          <a href="{{ '/pi-day/' | relative_url }}" class="btn btn-ghost btn-sm">About Pi Day →</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="label" style="font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-3);font-weight:600;">The first 500 digits of π</div>
+        <div id="first-digits" class="mono" style="margin-top:12px;font-size:13px;line-height:1.7;word-break:break-all;color:var(--text);">Loading…</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="cta-panel">
+      <h2>Ready to learn a few more digits?</h2>
+      <p class="lead">Play right here in your browser, or take it with you on iPhone. Either way, there's no sign-up and nothing to lose — except the digits you'll never forget.</p>
+      <div class="hero-actions" style="justify-content:center;margin-top:24px;">
+        <a href="{{ '/play/' | relative_url }}" class="btn btn-primary">▶ Play in Browser</a>
+        {% include app_badge.html %}
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  fetch('{{ "/assets/pi/pi-10k.txt" | relative_url }}')
+    .then(function(r){ return r.text(); })
+    .then(function(t){
+      var el = document.getElementById('first-digits');
+      if (el) el.textContent = t.slice(0, 502);
+    });
+</script>

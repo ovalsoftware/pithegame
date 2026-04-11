@@ -1,0 +1,93 @@
+---
+layout: default
+permalink: /arc-length-calculator/
+title: "Arc Length Calculator"
+description: "Calculate the arc length of a circle from radius and central angle. Supports degrees and radians. Step-by-step formulas using π."
+keywords: "arc length calculator, arc length formula, circle arc length, pi arc length, radians arc length"
+---
+
+<section class="page-head">
+  <div class="container">
+    <div class="eyebrow">Calculator</div>
+    <h1>Arc Length Calculator</h1>
+    <p>Enter a radius and a central angle — we'll use π to compute the exact arc length along the circle.</p>
+  </div>
+</section>
+
+<section class="section" style="padding-top:16px;">
+  <div class="container" style="max-width:720px;">
+    <div class="card calc">
+      <form id="calc">
+        <div>
+          <label for="radius">Radius</label>
+          <input id="radius" type="number" step="any" inputmode="decimal" placeholder="e.g. 10">
+        </div>
+        <div>
+          <label for="angle">Central angle</label>
+          <div class="row">
+            <input id="angle" type="number" step="any" inputmode="decimal" placeholder="e.g. 90">
+            <select id="unit">
+              <option value="deg">degrees</option>
+              <option value="rad">radians</option>
+            </select>
+          </div>
+        </div>
+        <div class="result">
+          <div class="label">Arc length</div>
+          <div class="value" id="result">—</div>
+          <div class="steps" id="steps"></div>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:24px;">
+  <div class="container prose">
+    <h2>Arc length formula</h2>
+    <p>The arc length (s) is the distance travelled along the curve of a circle. It depends on two things: the circle's radius (r) and the central angle (θ) that the arc subtends at the center.</p>
+    <ul>
+      <li><strong>Radians:</strong> <code>s = r · θ</code></li>
+      <li><strong>Degrees:</strong> <code>s = r · θ · (π / 180)</code></li>
+    </ul>
+    <p>When θ equals a full turn (360°, or 2π radians), the arc length equals the entire <a href="{{ '/circumference-calculator/' | relative_url }}">circumference</a> of the circle, <code>2πr</code>. That's the sanity check every arc length formula obeys.</p>
+    <h2>Worked example</h2>
+    <p>A pie slice cut from a 20 cm radius pie has a central angle of 45°. The crust along the outside of the slice measures:</p>
+    <p><code>s = 20 · 45 · (π/180) = 5π ≈ 15.7080 cm</code></p>
+    <h2>Why radians are elegant</h2>
+    <p>Radians are defined so that an angle of 1 radian subtends an arc equal to the radius. That's why the formula <code>s = rθ</code> is so clean — radians are essentially "how many radii fit along the arc." Degrees need an extra conversion factor of <code>π/180</code> because degrees are arbitrary units of angle.</p>
+    <h2>Related</h2>
+    <ul>
+      <li><a href="{{ '/circumference-calculator/' | relative_url }}">Circumference calculator</a></li>
+      <li><a href="{{ '/reference-angle-calculator/' | relative_url }}">Reference angle calculator</a></li>
+      <li><a href="{{ '/pi-numbers/' | relative_url }}">Key pi numbers and identities</a></li>
+    </ul>
+  </div>
+</section>
+
+<script>
+(function(){
+  var form = document.getElementById('calc');
+  var radius = document.getElementById('radius');
+  var angle = document.getElementById('angle');
+  var unit = document.getElementById('unit');
+  var result = document.getElementById('result');
+  var steps = document.getElementById('steps');
+
+  function fmt(n){ return Number(n.toFixed(6)).toString(); }
+
+  function update(){
+    var r = parseFloat(radius.value);
+    var a = parseFloat(angle.value);
+    if(isNaN(r) || isNaN(a)){ result.textContent = '—'; steps.textContent = ''; return; }
+    var theta = unit.value === 'deg' ? a * Math.PI / 180 : a;
+    var s = r * theta;
+    result.textContent = fmt(s);
+    steps.textContent = unit.value === 'deg'
+      ? 's = ' + r + ' · ' + a + ' · (π/180) ≈ ' + s.toFixed(6)
+      : 's = ' + r + ' · ' + a + ' ≈ ' + s.toFixed(6);
+  }
+  form.addEventListener('input', update);
+  update();
+})();
+</script>

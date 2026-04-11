@@ -1,0 +1,165 @@
+---
+layout: default
+permalink: /pi-quiz/
+title: "Pi Quiz · How well do you know π?"
+description: "Take our interactive pi quiz. 10 questions about the history, digits, and mathematics of pi. See your score and learn along the way."
+keywords: "pi quiz, pi day quiz, quiz about pi, math quiz pi"
+---
+
+<section class="page-head">
+  <div class="container">
+    <div class="eyebrow">10 questions</div>
+    <h1>The Pi Quiz</h1>
+    <p>Ten questions on the history, digits and mathematics of π. No time limit, no signups — just a good old-fashioned trivia challenge.</p>
+  </div>
+</section>
+
+<section class="section" style="padding-top:16px;">
+  <div class="container">
+    <div class="card quiz">
+      <div class="meta" id="meta">Question 1 of 10</div>
+      <div class="q" id="q">Loading…</div>
+      <div class="options" id="options"></div>
+      <div class="status" id="status"></div>
+      <div class="controls" style="display:flex;justify-content:center;gap:12px;margin-top:20px;">
+        <button class="btn btn-ghost btn-sm" id="next" type="button" style="display:none;">Next →</button>
+        <button class="btn btn-ghost btn-sm" id="restart" type="button" style="display:none;">↺ Restart</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:24px;">
+  <div class="container prose">
+    <h2>About this quiz</h2>
+    <p>Questions cover everything from the basic definition of pi to historical trivia, record-setting computations and the famous <a href="{{ '/fun-facts-about-pi/' | relative_url }}">Feynman point</a>. Your answers are scored instantly and nothing is saved or sent anywhere.</p>
+    <p>Need to brush up first? Read our <a href="{{ '/pi-number/' | relative_url }}">introduction to pi</a>, the <a href="{{ '/fun-facts-about-pi/' | relative_url }}">fun facts</a>, or the <a href="{{ '/digits-of-pi/' | relative_url }}">first 10,000 digits</a>.</p>
+  </div>
+</section>
+
+<script>
+(function(){
+  var QUIZ = [
+    {
+      q: "At what position in pi's decimal expansion does the first 0 appear?",
+      options: ["Position 1","Position 13","Position 32","Position 100"],
+      answer: 2,
+      explain: "Pi starts 3.14159265358979323846264338327950… The first 0 doesn't show up until <strong>position 32</strong>. It's a nice reminder that pi's digits don't distribute evenly in the short run — only over the long run."
+    },
+    {
+      q: "Complete Euler's identity: <span class='mono'>e<sup>iπ</sup> + 1 = ?</span>",
+      options: ["0","1","i","e"],
+      answer: 0,
+      explain: "The answer is <strong>0</strong>. Euler's identity is often called the most beautiful equation in mathematics because it ties together five of its most important constants: 0, 1, i, e and π — in a single elegant sentence."
+    },
+    {
+      q: "What fraction famously approximates π to 6 decimal places?",
+      options: ["22/7","355/113","3.14/1","3927/1250"],
+      answer: 1,
+      explain: "<strong>355/113</strong> (known as <em>Milü</em>, discovered by Chinese mathematician Zu Chongzhi around 480 CE) is accurate to 7 decimal places. 22/7 is only good to 2 decimals — accurate enough for homework, but not for anything serious."
+    },
+    {
+      q: "Ramanujan's 1914 pi formula produces roughly how many correct digits <em>per term</em>?",
+      options: ["1","4","8","14"],
+      answer: 2,
+      explain: "Ramanujan's series gives about <strong>8 digits per term</strong>, which was astonishing in 1914. The Chudnovsky brothers later refined it in 1987 to produce ~14 digits per term — still the fastest known method, and the one used for every world record computation."
+    },
+    {
+      q: "In Buffon's needle experiment (needle length L, line spacing d, with L ≤ d), the probability the needle crosses a line is…",
+      options: ["π/2","2L/(πd)","L/(2d)","L·π/d"],
+      answer: 1,
+      explain: "It's <strong>2L/(πd)</strong>. Drop enough needles, count the crossings, and you can estimate π without ever drawing a circle — a beautiful example of geometry sneaking into probability."
+    },
+    {
+      q: "Is pi proven to be a <em>normal number</em> (every finite digit sequence appearing with the expected frequency)?",
+      options: ["Yes, proven in 1761","Yes, proven in 1882","Not yet — still an open problem","No, proven false"],
+      answer: 2,
+      explain: "<strong>Still open.</strong> Pi looks normal in every empirical test, but no-one has proven it. It's one of the most famous unsolved problems about the simplest constants in mathematics."
+    },
+    {
+      q: "In 1897 the state of Indiana nearly passed a bill that would have legally redefined π as…",
+      options: ["3","3.2","22/7","π exactly"],
+      answer: 1,
+      explain: "The notorious <strong>Indiana Pi Bill</strong> implied π ≈ <strong>3.2</strong>, based on a crackpot proof by amateur mathematician Edwin Goodwin. A visiting math professor happened to be in the state capitol that day and killed the bill before it reached the senate."
+    },
+    {
+      q: "At the famous <em>Feynman point</em> (position 762 of pi), which digit repeats six times in a row?",
+      options: ["3","7","9","0"],
+      answer: 2,
+      explain: "Six <strong>9</strong>s in a row. Richard Feynman once quipped that he'd like to memorize pi up to that point so he could recite it as \"…nine nine nine nine nine nine, <em>and so on</em>\" — a joke, because the rest of pi emphatically doesn't go <em>and so on</em>."
+    },
+    {
+      q: "The Basel problem: <span class='mono'>1 + 1/4 + 1/9 + 1/16 + …</span> equals…",
+      options: ["π/4","π²/6","2π","π³/12"],
+      answer: 1,
+      explain: "<strong>π²/6</strong>. Euler solved this in 1734 after it had stumped mathematicians for 90 years. The fact that summing reciprocals of squares produces a value involving π — with no circle anywhere in sight — is one of the great \"why is π here?\" moments in mathematics."
+    },
+    {
+      q: "Who invented Pi Day, and where?",
+      options: ["Archimedes in Syracuse","Larry Shaw at the Exploratorium","NASA at JPL","The BBC in London"],
+      answer: 1,
+      explain: "Physicist <strong>Larry Shaw</strong> invented Pi Day in 1988 at the <strong>Exploratorium</strong> in San Francisco. The first celebration involved staff marching around a circular space at 1:59 PM and eating fruit pies. In 2019 UNESCO made March 14 the International Day of Mathematics."
+    }
+  ];
+
+  var idx = 0, score = 0;
+  var meta = document.getElementById('meta');
+  var qEl = document.getElementById('q');
+  var optsEl = document.getElementById('options');
+  var statusEl = document.getElementById('status');
+  var nextBtn = document.getElementById('next');
+  var restartBtn = document.getElementById('restart');
+
+  function render(){
+    var item = QUIZ[idx];
+    meta.textContent = 'Question ' + (idx+1) + ' of ' + QUIZ.length + ' · Score ' + score;
+    qEl.innerHTML = item.q;
+    optsEl.innerHTML = '';
+    statusEl.innerHTML = '';
+    nextBtn.style.display = 'none';
+    item.options.forEach(function(opt, i){
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.innerHTML = opt;
+      b.addEventListener('click', function(){ answer(i, b); });
+      optsEl.appendChild(b);
+    });
+  }
+
+  function answer(i, btn){
+    var item = QUIZ[idx];
+    var buttons = optsEl.querySelectorAll('button');
+    buttons.forEach(function(b){ b.disabled = true; });
+    buttons[item.answer].classList.add('correct');
+    var heading = '';
+    if(i === item.answer){
+      score++;
+      heading = '<div style="color:var(--mint-700);font-weight:600;margin-bottom:6px;">✓ Correct!</div>';
+    } else {
+      btn.classList.add('wrong');
+      heading = '<div style="color:var(--coral);font-weight:600;margin-bottom:6px;">✗ Not quite.</div>';
+    }
+    statusEl.innerHTML = heading + '<div class="explain">' + item.explain + '</div>';
+    if(idx < QUIZ.length - 1){
+      nextBtn.style.display = '';
+    } else {
+      finish();
+    }
+  }
+
+  function finish(){
+    statusEl.innerHTML = 'You scored <strong>' + score + ' / ' + QUIZ.length + '</strong>. ' +
+      (score === QUIZ.length ? "Perfect — you're a pi legend." :
+       score >= 7 ? "Impressive! Try <a href=\"/play/\">Pi — The Game</a> next." :
+       score >= 4 ? "Not bad. Brush up with our <a href=\"/fun-facts-about-pi/\">fun facts</a>." :
+                    "Plenty of room to grow — read the <a href=\"/pi-number/\">intro to pi</a> and try again.");
+    restartBtn.style.display = '';
+    nextBtn.style.display = 'none';
+  }
+
+  nextBtn.addEventListener('click', function(){ idx++; render(); });
+  restartBtn.addEventListener('click', function(){ idx = 0; score = 0; restartBtn.style.display = 'none'; render(); });
+
+  render();
+})();
+</script>

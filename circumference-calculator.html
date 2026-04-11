@@ -1,0 +1,98 @@
+---
+layout: default
+permalink: /circumference-calculator/
+title: "Circumference Calculator"
+description: "Free online circumference calculator. Enter a radius or diameter and instantly get the circumference of a circle using π. Step-by-step formula included."
+keywords: "circumference calculator, circle circumference, pi circumference, radius to circumference, diameter to circumference"
+---
+
+<section class="page-head">
+  <div class="container">
+    <div class="eyebrow">Calculator</div>
+    <h1>Circumference Calculator</h1>
+    <p>Type a radius or a diameter — we'll use π to compute the exact circumference of the circle.</p>
+  </div>
+</section>
+
+<section class="section" style="padding-top:16px;">
+  <div class="container" style="max-width:720px;">
+    <div class="card calc">
+      <form id="calc">
+        <div>
+          <label>What do you know?</label>
+          <div class="toggle">
+            <label><input type="radio" name="mode" value="r" checked><span>Radius</span></label>
+            <label><input type="radio" name="mode" value="d"><span>Diameter</span></label>
+          </div>
+        </div>
+        <div>
+          <label for="value">Value</label>
+          <input id="value" type="number" step="any" inputmode="decimal" placeholder="e.g. 5">
+        </div>
+        <div>
+          <label for="unit">Unit (optional)</label>
+          <input id="unit" type="text" value="cm">
+        </div>
+        <div class="result">
+          <div class="label">Circumference</div>
+          <div class="value" id="result">—</div>
+          <div class="steps" id="steps"></div>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:24px;">
+  <div class="container prose">
+    <h2>How to calculate circumference</h2>
+    <p>The circumference of a circle is the distance all the way around its edge. Two equivalent formulas use pi (π ≈ 3.14159…):</p>
+    <ul>
+      <li><strong>From radius:</strong> <code>C = 2 · π · r</code></li>
+      <li><strong>From diameter:</strong> <code>C = π · d</code></li>
+    </ul>
+    <p>Because the diameter is just twice the radius (<code>d = 2r</code>), both formulas give the same answer. Pi is the ratio of a circle's circumference to its diameter — it's the same constant for every circle in the universe.</p>
+    <h2>Worked example</h2>
+    <p>A pizza has a radius of 15 cm. What's its circumference?</p>
+    <p><code>C = 2 · π · 15 = 30π ≈ 94.2478 cm</code></p>
+    <h2>Tips</h2>
+    <ul>
+      <li>Keep your units consistent. If radius is in inches, circumference is in inches.</li>
+      <li>For exact answers, leave π symbolic (like <code>30π</code>) instead of decimalizing.</li>
+      <li>Want to go the other way? Try our <a href="{{ '/diameter-to-circumference/' | relative_url }}">diameter to circumference</a> converter.</li>
+    </ul>
+    <h2>Related calculators</h2>
+    <ul>
+      <li><a href="{{ '/arc-length-calculator/' | relative_url }}">Arc length calculator</a> — circumference of a partial arc.</li>
+      <li><a href="{{ '/reference-angle-calculator/' | relative_url }}">Reference angle calculator</a> — reduce angles into standard position.</li>
+      <li><a href="{{ '/diameter-to-circumference/' | relative_url }}">Diameter to circumference</a> — quick diameter conversion.</li>
+    </ul>
+  </div>
+</section>
+
+<script>
+(function(){
+  var form = document.getElementById('calc');
+  var value = document.getElementById('value');
+  var unit = document.getElementById('unit');
+  var result = document.getElementById('result');
+  var steps = document.getElementById('steps');
+
+  function fmt(n){ return Number(n.toFixed(6)).toString(); }
+
+  function update(){
+    var mode = form.mode.value;
+    var v = parseFloat(value.value);
+    if(isNaN(v)){ result.textContent = '—'; steps.textContent = ''; return; }
+    var d = mode === 'r' ? 2 * v : v;
+    var c = Math.PI * d;
+    var u = (unit.value || '').trim();
+    result.textContent = fmt(c) + (u ? ' ' + u : '');
+    steps.textContent = mode === 'r'
+      ? 'C = 2 · π · ' + v + ' = ' + fmt(2*v) + 'π ≈ ' + c.toFixed(6)
+      : 'C = π · ' + v + ' ≈ ' + c.toFixed(6);
+  }
+  form.addEventListener('input', update);
+  update();
+})();
+</script>

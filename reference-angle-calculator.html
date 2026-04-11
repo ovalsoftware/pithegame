@@ -1,0 +1,98 @@
+---
+layout: default
+permalink: /reference-angle-calculator/
+title: "Reference Angle Calculator"
+description: "Instantly find the reference angle for any angle in degrees or radians. Shows quadrant, formula, and step-by-step reduction to standard position."
+keywords: "reference angle calculator, reference angle, quadrant calculator, trigonometry reference angle"
+---
+
+<section class="page-head">
+  <div class="container">
+    <div class="eyebrow">Calculator</div>
+    <h1>Reference Angle Calculator</h1>
+    <p>Reduce any angle to its acute reference angle — the shortest distance to the x-axis — in degrees or radians.</p>
+  </div>
+</section>
+
+<section class="section" style="padding-top:16px;">
+  <div class="container" style="max-width:720px;">
+    <div class="card calc">
+      <form id="calc">
+        <div>
+          <label for="angle">Angle</label>
+          <div class="row">
+            <input id="angle" type="number" step="any" inputmode="decimal" placeholder="e.g. 210">
+            <select id="unit">
+              <option value="deg">degrees</option>
+              <option value="rad">radians</option>
+            </select>
+          </div>
+        </div>
+        <div class="result">
+          <div class="label">Reference angle</div>
+          <div class="value" id="result">—</div>
+          <div class="steps" id="quad"></div>
+          <div class="steps" id="steps"></div>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:24px;">
+  <div class="container prose">
+    <h2>What is a reference angle?</h2>
+    <p>A reference angle is the acute angle between the terminal side of an angle (in standard position) and the x-axis. It's always between 0° and 90° (or 0 and π/2 radians) and is used to compute trig values of larger, negative, or coterminal angles using just the first quadrant.</p>
+    <h2>How to find it</h2>
+    <p>First, reduce the angle into the range [0°, 360°) by adding or subtracting full turns. Then, depending on which quadrant the terminal side lands in:</p>
+    <ul>
+      <li><strong>Quadrant I</strong> (0°–90°): reference = θ</li>
+      <li><strong>Quadrant II</strong> (90°–180°): reference = 180° − θ</li>
+      <li><strong>Quadrant III</strong> (180°–270°): reference = θ − 180°</li>
+      <li><strong>Quadrant IV</strong> (270°–360°): reference = 360° − θ</li>
+    </ul>
+    <p>The same logic applies in radians with π in place of 180°, 2π in place of 360°, and so on — reference angles are where π earns its keep in trigonometry.</p>
+    <h2>Worked example</h2>
+    <p>The reference angle of 210° is in quadrant III, so it's <code>210° − 180° = 30°</code>. That means sin(210°) = −sin(30°) = −½, and cos(210°) = −cos(30°) = −√3/2. The reference angle is a shortcut past all the sign-juggling.</p>
+    <h2>Related</h2>
+    <ul>
+      <li><a href="{{ '/arc-length-calculator/' | relative_url }}">Arc length calculator</a></li>
+      <li><a href="{{ '/pi-numbers/' | relative_url }}">Common pi values in trigonometry</a></li>
+    </ul>
+  </div>
+</section>
+
+<script>
+(function(){
+  var PI = Math.PI;
+  var form = document.getElementById('calc');
+  var angle = document.getElementById('angle');
+  var unit = document.getElementById('unit');
+  var result = document.getElementById('result');
+  var quad = document.getElementById('quad');
+  var steps = document.getElementById('steps');
+
+  function fmt(n){ return Number(n.toFixed(4)).toString(); }
+
+  function update(){
+    var a = parseFloat(angle.value);
+    if(isNaN(a)){ result.textContent='—'; quad.textContent=''; steps.textContent=''; return; }
+    var deg = unit.value === 'deg' ? a : a * 180 / PI;
+    var norm = ((deg % 360) + 360) % 360;
+    var q, ref;
+    if(norm < 90){ q = 'I'; ref = norm; }
+    else if(norm < 180){ q = 'II'; ref = 180 - norm; }
+    else if(norm < 270){ q = 'III'; ref = norm - 180; }
+    else { q = 'IV'; ref = 360 - norm; }
+    if(unit.value === 'deg'){
+      result.textContent = fmt(ref) + '°';
+    } else {
+      result.textContent = Number((ref * PI / 180).toFixed(6)) + ' rad';
+    }
+    quad.textContent = 'Normalized to ' + fmt(norm) + '° in quadrant ' + q;
+    steps.textContent = 'Reference = ' + (q==='I'?'θ':q==='II'?'180° − θ':q==='III'?'θ − 180°':'360° − θ');
+  }
+  form.addEventListener('input', update);
+  update();
+})();
+</script>

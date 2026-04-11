@@ -1,0 +1,44 @@
+---
+layout: default
+permalink: /digits-of-pi/
+title: "Digits of Pi · First 10,000 and beyond"
+description: "Browse the first 10,000 digits of pi, jump to any position, or download the full file. Plus everything you need to know about the digits of π."
+keywords: "digits of pi, pi digits, first digits of pi, pi decimal expansion, number pi"
+---
+
+<section class="page-head">
+  <div class="container">
+    <div class="eyebrow">The digits</div>
+    <h1>The Digits of Pi</h1>
+    <p>The decimal expansion of pi goes on forever and never repeats. Below are the first 10,000 digits (more than enough to impress your math teacher), with jump-to-position and downloadable text.</p>
+  </div>
+</section>
+
+<section class="section" style="padding-top:16px;">
+  <div class="container" style="max-width:860px;">
+    {% include digit_viewer.html src="/assets/pi/pi-10k.txt" chunk=100 initial=1000 %}
+  </div>
+</section>
+
+<section class="section" style="padding-top:24px;">
+  <div class="container prose">
+    <h2>What are the digits of pi?</h2>
+    <p>Pi (π) is an irrational number, which means its decimal representation neither ends nor settles into a permanently repeating pattern. The first ten digits are <code>3.141592653</code>. After that, the digits continue indefinitely — and as far as anyone has ever computed, they pass every statistical test for randomness.</p>
+    <p>The current record for calculating digits of pi stands in the <em>hundreds of trillions</em>, achieved using massively parallel supercomputers and the Chudnovsky formula. You don't need anywhere near that many to use pi in practice: 39 digits of pi are enough to calculate the circumference of the observable universe to the width of a hydrogen atom.</p>
+
+    <h2>How many digits do you actually need?</h2>
+    <ul>
+      <li><strong>2 digits</strong> (3.14) — school homework and everyday use.</li>
+      <li><strong>4 digits</strong> (3.1416) — good enough for most engineering.</li>
+      <li><strong>15 digits</strong> — what NASA's JPL uses for interplanetary navigation.</li>
+      <li><strong>39 digits</strong> — circumference of the universe to atomic precision.</li>
+      <li><strong>100+ digits</strong> — bragging rights at Pi Day recitation contests.</li>
+    </ul>
+
+    <h2>Want the really long list?</h2>
+    <p>We also have <a href="{{ '/million-digits-of-pi/' | relative_url }}">one million digits of pi</a>, <a href="{{ '/pi-numbers/' | relative_url }}">common pi numbers</a> and the <a href="{{ '/pi-number/' | relative_url }}">story of the number π itself</a>.</p>
+
+    <h2>Memorize them the fun way</h2>
+    <p>If you want to remember more than just "3.14", try <a href="{{ '/play/' | relative_url }}">Pi — The Game</a>. It teaches the digits in small chunks and turns memorization into a streak-based challenge. It's how most people get past 100 digits for the first time.</p>
+  </div>
+</section>

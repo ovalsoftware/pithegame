@@ -1,0 +1,80 @@
+---
+layout: default
+permalink: /diameter-to-circumference/
+title: "Diameter to Circumference Converter"
+description: "Convert diameter to circumference instantly. Free online pi converter with step-by-step formula (C = π · d) and worked examples."
+keywords: "diameter to circumference, diameter to circumference calculator, convert diameter to circumference, pi calculator"
+---
+
+<section class="page-head">
+  <div class="container">
+    <div class="eyebrow">Calculator</div>
+    <h1>Diameter to Circumference</h1>
+    <p>Enter a diameter and we'll multiply by π to give you the circumference. The simplest circle formula there is.</p>
+  </div>
+</section>
+
+<section class="section" style="padding-top:16px;">
+  <div class="container" style="max-width:720px;">
+    <div class="card calc">
+      <form id="calc">
+        <div>
+          <label for="d">Diameter</label>
+          <input id="d" type="number" step="any" inputmode="decimal" placeholder="e.g. 12">
+        </div>
+        <div>
+          <label for="u">Unit</label>
+          <input id="u" type="text" value="cm">
+        </div>
+        <div class="result">
+          <div class="label">Circumference</div>
+          <div class="value" id="result">—</div>
+          <div class="steps" id="steps"></div>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:24px;">
+  <div class="container prose">
+    <h2>Diameter to circumference formula</h2>
+    <p>The circumference of a circle equals its diameter multiplied by pi:</p>
+    <p><code>C = π · d</code></p>
+    <p>That's literally the definition of pi — the ratio of a circle's circumference to its diameter is π ≈ 3.14159265358979… for every circle ever drawn. Whether you're sizing a wheel, a pizza, the Moon, or a CERN particle collider, the relationship is the same.</p>
+    <h2>Worked examples</h2>
+    <ul>
+      <li>Diameter <code>10 cm</code> → Circumference <code>10π ≈ 31.4159 cm</code></li>
+      <li>Diameter <code>12 in</code> → Circumference <code>12π ≈ 37.6991 in</code></li>
+      <li>Diameter <code>1 m</code> → Circumference <code>π ≈ 3.14159 m</code></li>
+    </ul>
+    <h2>Going the other way</h2>
+    <p>If you already know the circumference and need the diameter, just divide: <code>d = C / π</code>. And if you'd rather work from the radius instead, see our <a href="{{ '/circumference-calculator/' | relative_url }}">circumference calculator</a>.</p>
+    <h2>Related</h2>
+    <ul>
+      <li><a href="{{ '/arc-length-calculator/' | relative_url }}">Arc length calculator</a></li>
+      <li><a href="{{ '/pi-numbers/' | relative_url }}">Useful pi numbers</a></li>
+      <li><a href="{{ '/fun-facts-about-pi/' | relative_url }}">Fun facts about pi</a></li>
+    </ul>
+  </div>
+</section>
+
+<script>
+(function(){
+  var form = document.getElementById('calc');
+  var d = document.getElementById('d');
+  var u = document.getElementById('u');
+  var result = document.getElementById('result');
+  var steps = document.getElementById('steps');
+  function update(){
+    var v = parseFloat(d.value);
+    if(isNaN(v)){ result.textContent='—'; steps.textContent=''; return; }
+    var c = Math.PI * v;
+    var unit = (u.value || '').trim();
+    result.textContent = Number(c.toFixed(6)) + (unit ? ' ' + unit : '');
+    steps.textContent = 'C = π · ' + v + ' ≈ ' + c.toFixed(6);
+  }
+  form.addEventListener('input', update);
+  update();
+})();
+</script>

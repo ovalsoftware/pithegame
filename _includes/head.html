@@ -1,0 +1,40 @@
+{%- assign page_title = page.title | default: site.title -%}
+{%- assign page_desc  = page.description | default: site.description -%}
+{%- assign canonical  = page.url | absolute_url -%}
+{%- assign og_image   = "/assets/og.png" | absolute_url -%}
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{{ page_title }}{% unless page.url == "/" %} — {{ site.title }}{% endunless %}</title>
+<meta name="description" content="{{ page_desc }}">
+{% if page.keywords %}<meta name="keywords" content="{{ page.keywords }}">{% endif %}
+<link rel="canonical" href="{{ canonical }}">
+<link rel="icon" type="image/svg+xml" href="{{ '/favicon.svg' | relative_url }}">
+<link rel="sitemap" href="{{ '/sitemap.xml' | relative_url }}">
+<meta name="theme-color" content="#4ec9a8">
+
+<meta property="og:type"        content="website">
+<meta property="og:site_name"   content="{{ site.title }}">
+<meta property="og:title"       content="{{ page_title }}">
+<meta property="og:description" content="{{ page_desc }}">
+<meta property="og:url"         content="{{ canonical }}">
+<meta property="og:image"       content="{{ og_image }}">
+<meta name="twitter:card"       content="summary_large_image">
+<meta name="twitter:title"      content="{{ page_title }}">
+<meta name="twitter:description" content="{{ page_desc }}">
+<meta name="twitter:image"      content="{{ og_image }}">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "{{ site.title }}",
+  "url": "{{ site.url }}",
+  "description": "{{ site.description | strip_newlines }}"
+}
+</script>
+{% if page.schema %}<script type="application/ld+json">{{ page.schema | jsonify }}</script>{% endif %}

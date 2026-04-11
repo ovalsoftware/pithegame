@@ -1,0 +1,197 @@
+---
+layout: default
+permalink: /play/
+title: "Play Pi — The Game Online Free"
+description: "Play the Pi memorization game online for free. Type the digits of pi, beat your streak, and see how many you can remember."
+keywords: "pi game, play pi, pi game online, pi memorization game, pi calculator game"
+---
+
+<section class="page-head">
+  <div class="container">
+    <div class="eyebrow">Free browser game</div>
+    <h1>Play Pi — The Game</h1>
+    <p>Type the digits of pi one at a time. Get it right and keep going — get it wrong and your game ends. How many digits can you remember?</p>
+  </div>
+</section>
+
+<section class="section" style="padding-top:16px;">
+  <div class="container">
+    <div class="card game">
+      <div class="scoreline">
+        <div>
+          <div class="label">Your streak</div>
+          <div class="streak" id="streak">0</div>
+        </div>
+        <div style="text-align:right;">
+          <div class="label">Personal best</div>
+          <div class="best" id="best">0</div>
+        </div>
+      </div>
+
+      <div class="digit-box">
+        <div class="label">Digits so far</div>
+        <div class="text" id="digits">3.</div>
+      </div>
+
+      <div class="msg" id="msg"></div>
+
+      <div class="keypad" id="keypad" aria-label="Digit keypad"></div>
+
+      <div class="controls">
+        <button class="btn btn-primary" id="newgame" type="button" style="display:none;">↺ New Game</button>
+        <button class="btn btn-ghost btn-sm" id="peek" type="button">👁 Peek next</button>
+      </div>
+
+      <p class="tip">Tip: you can also use your physical keyboard. Press <span class="kbd">0</span>–<span class="kbd">9</span>, <span class="kbd">Enter</span> to start a new game.</p>
+    </div>
+
+    <div class="card" style="max-width:680px;margin:40px auto 0;">
+      <h3 style="margin-top:0;">Want the full experience?</h3>
+      <p style="margin:8px 0 16px;">The iPhone app has trophies, checkpoints every 10 digits, theme packs, haptic feedback and a leaderboard. It's the definitive way to memorize pi.</p>
+      {% include app_badge.html %}
+    </div>
+  </div>
+</section>
+
+<script>
+(function(){
+  var display   = document.getElementById('digits');
+  var streakEl  = document.getElementById('streak');
+  var bestEl    = document.getElementById('best');
+  var msgEl     = document.getElementById('msg');
+  var keypad    = document.getElementById('keypad');
+  var newGameBtn = document.getElementById('newgame');
+  var peekBtn   = document.getElementById('peek');
+
+  var STORE = 'pithegame:best';
+  var PREVIEW_NEXT = 24;       // how many upcoming digits to reveal after a loss
+
+  var digits = '';             // full pi digit string, e.g. "31415926..."
+  var position = 1;            // next expected digit index (0 is the leading 3)
+  var wrongChar = null;        // the incorrect digit the player typed
+  var gameOver = false;
+
+  var best = Number(localStorage.getItem(STORE) || 0);
+  bestEl.textContent = best;
+
+  function render(){
+    // Build: "3." + correct run + (optionally wrong digit in red + faded upcoming)
+    display.textContent = '';
+
+    var prefix = document.createElement('span');
+    prefix.textContent = '3.';
+    display.appendChild(prefix);
+
+    var correct = digits.slice(1, position);
+    if(correct){
+      var c = document.createElement('span');
+      c.textContent = correct;
+      display.appendChild(c);
+    }
+
+    if(gameOver){
+      var w = document.createElement('span');
+      w.className = 'wrong-digit';
+      w.textContent = wrongChar;
+      display.appendChild(w);
+
+      var upcoming = digits.slice(position + 1, position + 1 + PREVIEW_NEXT);
+      if(upcoming){
+        var f = document.createElement('span');
+        f.className = 'future';
+        f.textContent = upcoming;
+        display.appendChild(f);
+        if(position + 1 + PREVIEW_NEXT < digits.length){
+          var e = document.createElement('span');
+          e.className = 'future';
+          e.textContent = '…';
+          display.appendChild(e);
+        }
+      }
+    }
+
+    streakEl.textContent = Math.max(0, position - 1);
+  }
+
+  function type(ch){
+    if(gameOver || !digits) return;
+    if(!/^[0-9]$/.test(ch)) return;
+    var expected = digits[position];
+    if(ch === expected){
+      position++;
+      msgEl.textContent = '';
+      var score = position - 1;
+      if(score > best){
+        best = score;
+        localStorage.setItem(STORE, String(best));
+        bestEl.textContent = best;
+      }
+      if(score % 10 === 0 && score > 0){
+        msgEl.textContent = '🎉 ' + score + ' digits! Nice streak.';
+      }
+      render();
+    } else {
+      endGame(ch);
+    }
+  }
+
+  function endGame(ch){
+    gameOver = true;
+    wrongChar = ch;
+    var score = position - 1;
+    msgEl.innerHTML =
+      '<strong style="color:var(--coral);">Game Over</strong> · you remembered <strong>' +
+      score + '</strong> digit' + (score === 1 ? '' : 's') +
+      (score > 0 && score === best ? ' · <span style="color:var(--mint-700)">new personal best!</span>' : '') +
+      '.';
+    newGameBtn.style.display = '';
+    // Disable keypad buttons visually
+    keypad.querySelectorAll('button').forEach(function(b){ b.disabled = true; });
+    render();
+  }
+
+  function newGame(){
+    gameOver = false;
+    wrongChar = null;
+    position = 1;
+    msgEl.textContent = '';
+    newGameBtn.style.display = 'none';
+    keypad.querySelectorAll('button').forEach(function(b){ b.disabled = false; });
+    render();
+  }
+
+  function peek(){
+    if(gameOver || !digits) return;
+    msgEl.innerHTML = '👁 Next digit is <span class="mono" style="color:var(--mint-700);font-weight:600">' + digits[position] + '</span>';
+  }
+
+  var keys = ['1','2','3','4','5','6','7','8','9','↺','0','👁'];
+  keys.forEach(function(k){
+    var b = document.createElement('button');
+    b.type = 'button';
+    b.textContent = k;
+    b.addEventListener('click', function(){
+      if(k === '↺') newGame();
+      else if(k === '👁') peek();
+      else type(k);
+    });
+    keypad.appendChild(b);
+  });
+
+  newGameBtn.addEventListener('click', newGame);
+  peekBtn.addEventListener('click', peek);
+  window.addEventListener('keydown', function(e){
+    if(/^[0-9]$/.test(e.key)){ type(e.key); e.preventDefault(); }
+    else if(e.key === 'Enter' || e.key === ' '){
+      if(gameOver){ newGame(); e.preventDefault(); }
+    }
+  });
+
+  fetch('{{ "/assets/pi/pi-10k.txt" | relative_url }}')
+    .then(function(r){ return r.text(); })
+    .then(function(t){
+      digits = t.trim().replace('.', ''); // "31415..."
+      render();
+    });
+})();
+</script>
