@@ -1,6 +1,3 @@
----
-# served as static file
----
 User-agent: *
 Allow: /
 
