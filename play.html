@@ -39,7 +39,7 @@ keywords: "pi game, play pi, pi game online, pi memorization game, pi calculator
 
       <div class="controls">
         <button class="btn btn-primary" id="newgame" type="button" style="display:none;">↺ New Game</button>
-        <button class="btn btn-ghost btn-sm" id="peek" type="button">👁 Peek next</button>
+        <button class="btn btn-ghost btn-sm" id="peek" type="button">Peek next</button>
       </div>
 
       <p class="tip">Tip: you can also use your physical keyboard. Press <span class="kbd">0</span>–<span class="kbd">9</span>, <span class="kbd">Enter</span> to start a new game.</p>
@@ -165,14 +165,14 @@ keywords: "pi game, play pi, pi game online, pi memorization game, pi calculator
     msgEl.innerHTML = '👁 Next digit is <span class="mono" style="color:var(--mint-700);font-weight:600">' + digits[position] + '</span>';
   }
 
-  var keys = ['1','2','3','4','5','6','7','8','9','↺','0','👁'];
+  var keys = ['1','2','3','4','5','6','7','8','9','↺','0','?'];
   keys.forEach(function(k){
     var b = document.createElement('button');
     b.type = 'button';
     b.textContent = k;
     b.addEventListener('click', function(){
       if(k === '↺') newGame();
-      else if(k === '👁') peek();
+      else if(k === '?') peek();
       else type(k);
     });
     keypad.appendChild(b);

@@ -211,8 +211,7 @@ pre { font-family: var(--font-mono); }
 .feature-grid { display: grid; gap: 20px; margin-top: 40px; }
 @media (min-width: 720px) { .feature-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (min-width: 1000px) { .feature-grid { grid-template-columns: repeat(3, 1fr); } }
-.feature .icon { font-size: 28px; }
-.feature h3 { margin: 10px 0 6px; color: var(--text); font-family: var(--font-display); }
+.feature h3 { margin: 0 0 6px; color: var(--text); font-family: var(--font-display); }
 .feature p { font-size: 14px; color: var(--text-2); margin: 0; }
 
 /* The big promo panel on the homepage */
