@@ -41,6 +41,13 @@
 </script>
 
 
+<!-- Privacy-friendly analytics by Plausible -->
+<script async src="https://plausible.io/js/pa-KncgLE2UBr4ycHWRkSM0-.js"></script>
+<script>
+  window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+  plausible.init()
+</script>
+
 </head>
 <body>
   <a href="#main" class="skip-link">Skip to content</a>
@@ -65,7 +72,7 @@
         <a href="/pi-quiz/">Quiz</a>
       
     </nav>
-    <a href="https://apps.apple.com/us/app/pi-the-game/id974805037" class="btn btn-primary btn-sm">Get the App</a>
+    <a href="/app/" class="btn btn-primary btn-sm">Get the App</a>
   </div>
 </header>
 
@@ -103,7 +110,7 @@
 
       <div class="controls">
         <button class="btn btn-primary" id="newgame" type="button" style="display:none;">↺ New Game</button>
-        <button class="btn btn-ghost btn-sm" id="peek" type="button">👁 Peek next</button>
+        <button class="btn btn-ghost btn-sm" id="peek" type="button">Peek next</button>
       </div>
 
       <p class="tip">Tip: you can also use your physical keyboard. Press <span class="kbd">0</span>–<span class="kbd">9</span>, <span class="kbd">Enter</span> to start a new game.</p>
@@ -232,14 +239,14 @@
     msgEl.innerHTML = '👁 Next digit is <span class="mono" style="color:var(--mint-700);font-weight:600">' + digits[position] + '</span>';
   }
 
-  var keys = ['1','2','3','4','5','6','7','8','9','↺','0','👁'];
+  var keys = ['1','2','3','4','5','6','7','8','9','↺','0','?'];
   keys.forEach(function(k){
     var b = document.createElement('button');
     b.type = 'button';
     b.textContent = k;
     b.addEventListener('click', function(){
       if(k === '↺') newGame();
-      else if(k === '👁') peek();
+      else if(k === '?') peek();
       else type(k);
     });
     keypad.appendChild(b);
@@ -274,6 +281,7 @@
     <div>
       <h4>Play</h4>
       <ul>
+        <li><a href="/app/">Pi — The Game for iPhone</a></li>
         <li><a href="/play/">Play Pi — The Game</a></li>
         <li><a href="/pi-calculator-game/">Pi Calculator Game</a></li>
         <li><a href="/pi-quiz/">Pi Quiz</a></li>
