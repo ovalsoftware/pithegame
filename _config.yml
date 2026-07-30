@@ -56,5 +56,8 @@ content_pages:
   - { url: "/fun-facts-about-pi/",        label: "Fun Facts About Pi" }
   - { url: "/pi-quiz/",                   label: "Pi Quiz" }
   - { url: "/pi-day-trivia/",             label: "Pi Day Trivia" }
+  - { url: "/pi-jokes/",                  label: "Pi Jokes" }
+  - { url: "/pi-memorization-record/",    label: "Pi Memorization Record" }
   - { url: "/pi-day-coloring-sheets/",    label: "Pi Day Coloring Sheets" }
+  - { url: "/pi-day-printables/",         label: "Pi Day Printables" }
   - { url: "/pi-calculator-game/",        label: "Pi Calculator Game" }
